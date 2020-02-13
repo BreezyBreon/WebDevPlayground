@@ -1,0 +1,33 @@
+
+/*setting the size of the web page as 100% of view height (fills background)*/
+
+
+
+
+
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+  background-color: #f0f1f8;
+  background-image: -webkit-linear-gradient(65deg, #459e9b 50%, #f0f1f8 50%)
+}
+
+
+/*centering MentorX div and spacing from top*/
+.mentorxLogo {
+  margin-top: 100px;
+  text-align: center;
+}
+
+/*setting the font size and max width size of the logo*/
+.mentorxLogo img {
+  max-width: 600px;
+  font-size: 100px;
+}
+
+footer {
+  color: grey;
+  text-align: center;
+  align-content: bottom;
+}

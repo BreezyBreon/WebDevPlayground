@@ -1,0 +1,116 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: rgb(240,241,248);
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.top {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+
+.middle {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.pwReset {
+  margin-top: 10px;
+}
+
+.registerNow {
+  display: inline-flex;
+  margin-top: 10px;
+}
+
+.registerLink {
+  margin-left: 5px;
+}
+
+#loginHeader {
+  color: rgb(73,73,73);
+}
+
+#signinBtn {
+  background-color: rgb(69,158,155) !important;
+  border: rgb(69,158,155) !important;
+}
+
+
+#signinBtn:focus {
+  background-color: rgba(69,158,155,0.5) !important;
+  border: rgba(69,158,155,0.5) !important;
+}
+
+#signinBtn:hover {
+  background-color: rgba(69,158,155,0.5) !important;
+  border: rgb(69,158,155) !important;
+}
+
+
+/*specific to registration.ejs*/
+
+.divider-text {
+    position: relative;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.divider-text span {
+    padding: 7px;
+    font-size: 12px;
+    position: relative;   
+    z-index: 2;
+}
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
+
+.btn-linkedin {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
