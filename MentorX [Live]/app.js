@@ -14,6 +14,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
+
 // Passport documentation
 app.use(session({
 	secret: "Cravings deal for the win.",
@@ -100,21 +101,12 @@ app.post("/register", function(req, res){
  });
 
 
-app.post("/login", function(req, res){
-  const user = new User ({
-    username: req.body.username,
-    password: req.body.password
-  });
-  req.login(user, function(err){
-    if (err) {
-      console.log(err);
-    } else {
-      passport.authenticate("local")(req, res, function(){
-        res.redirect("/homepage");
-      });
-    }
-  });
-});
+app.post("/login", 
+      passport.authenticate("local", {
+        successRedirect: "/homepage",
+        failureRedirect: "/login",
+        failureMessage: "incorrect password"
+    }));
 
 
 let port = process.env.PORT;
