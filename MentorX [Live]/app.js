@@ -90,8 +90,6 @@ app.post("/register", function(req, res){
       passport.authenticate("local")(req, res, function(){
       res.redirect("/homepage");
           const user = new User ({
-          fname: req.body.fname,
-          lname: req.body.lname,
           email: req.body.username,
           password: req.body.password
           });

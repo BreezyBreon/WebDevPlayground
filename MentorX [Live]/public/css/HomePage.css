@@ -57,7 +57,7 @@ body {
 
 .topNav {
   padding-top: 0;
-  background-color: rgb(78,41,115);
+  background-color: #364045;
   overflow: hidden;
   width: 100%;
   min-width: 600px;
@@ -82,7 +82,7 @@ body {
 
 .topNav a:hover {
   background-color: white;
-  color: rgb(104,52,156);
+  color: rgb(69,158,155);
 }
 
 .modal {
@@ -106,7 +106,7 @@ body {
 }
 
 .modal a{
-  background-color: rgb(163,123,203);
+  background-color: rgb(69,158,155);
   color: white;
   display: block;
   padding: 12px;
@@ -116,7 +116,7 @@ body {
 
 .modal a:hover {
   background-color: white;
-  color: rgb(104,52,156);
+  color: rgb(69,158,155);
   font-weight: 900;
   font-size: 20px;
 }
@@ -136,7 +136,7 @@ body {
   font-size: 40px;
   width: 100%;
   text-align: center;
-  color: rgb(104,52,156);
+  color: rgb(69,158,155);
   font-weight: bold;
 }
 
@@ -156,13 +156,13 @@ body {
 }
 
 .profileImage {
-  background-color: rgb(104,52,156);
+  background-color: rgb(69,158,155);
   text-align: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  width: 100px;
+  width: 100px;`
   height: 100px;
   border: 4px white solid;
   border-radius: 50%;
@@ -195,7 +195,7 @@ body {
   width: 90%;
   border: 1px solid white;
 }
-
+    
 
 .mentorConnection1 {
   margin-top: 20px;
@@ -203,7 +203,7 @@ body {
 }
 
 .mentorImage1 {
-  background-color: rgb(163,123,203);
+  background-color: rgb(69,158,155);
   margin-top:  5px;
   margin-left: 5px;
   width: 60px;
@@ -213,7 +213,7 @@ body {
 }
 
 .mentorImage1 i {
-  color: rgb(104,52,156);
+  color: white;
   font-size: 30px;
   margin-left: 3.5px;
   padding: 12px;
@@ -240,7 +240,7 @@ body {
 }
 
 .mentorImage2 {
-  background-color: rgb(163,123,203);
+  background-color: rgb(69,158,155);
   margin-top:  5px;
   margin-left: 5px;
   width: 60px;
@@ -250,7 +250,7 @@ body {
 }
 
 .mentorImage2 i {
-  color: rgb(104,52,156);
+  color: white;
   font-size: 30px;
   margin-left: 3.5px;
   padding: 12px;
@@ -276,7 +276,7 @@ body {
 }
 
 .mentorImage3 {
-  background-color: rgb(163,123,203);
+  background-color: rgb(69,158,155);
   margin-top:  5px;
   margin-left: 5px;
   width: 60px;
@@ -286,7 +286,7 @@ body {
 }
 
 .mentorImage3 i {
-  color: rgb(104,52,156);
+  color: white;
   font-size: 30px;
   margin-left: 3.5px;
   padding: 12px;
@@ -333,7 +333,7 @@ body {
 }
 
 #iconMenu .fas{
-  color: rgb(104,52,156);
+  color: rgb(69,158,155);
   font-weight: bold;
   margin-right: 10px;
   }
@@ -378,7 +378,7 @@ body {
 
 .iconText a {
   font-size: 20px;
-  color: rgb(104,52,156);
+  color: rgb(69,158,155);
   font-weight: bold;
   text-decoration: none;
 }
@@ -442,7 +442,7 @@ body {
 
 #newsFeedUpdate1 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -483,7 +483,7 @@ body {
 
 #newsFeedUpdate2 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -524,7 +524,7 @@ body {
 
 #newsFeedUpdate3 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -564,7 +564,7 @@ body {
 
 #newsFeedUpdate4 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -605,7 +605,7 @@ body {
 
 #newsFeedUpdate5 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -646,7 +646,7 @@ body {
 
 #newsFeedUpdate6 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -687,7 +687,7 @@ body {
 
 #newsFeedUpdate7 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -728,7 +728,7 @@ body {
 
 #newsFeedUpdate8 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -768,7 +768,7 @@ body {
 
 #newsFeedUpdate9 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
@@ -808,7 +808,7 @@ body {
 
 #newsFeedUpdate10 {
   width: 95%;
-  border: 5px solid rgb(78,41,115);
+  border: 5px solid rgb(69,158,155);
   border-radius: 25px;
   height: 150px;
   background-color: #FFF;
