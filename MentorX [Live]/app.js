@@ -1,5 +1,6 @@
 //jshint esversion:6 for test
 
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -7,12 +8,17 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const findOrCreate = require('mongoose-findorcreate');
+
 
 const app = express();
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 
 // Passport documentation
@@ -33,6 +39,7 @@ mongoose.set('useCreateIndex', true);
 const userSchema = new mongoose.Schema ({
   fname: String,
   lname: String,
+  linkedinID: String,
   email: String,
   password: String
   }, {
@@ -41,25 +48,46 @@ const userSchema = new mongoose.Schema ({
 
 // Passport heavy lifting to salt and hash encrypted information
 userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
 
 // passport local mongoose
 // Serialise allows cookies and deserialize removes cookie
 passport.use(User.createStrategy());
- 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+passport.use(new LinkedInStrategy({
+  clientID: process.env.LINKEDIN_ID,
+  clientSecret: process.env.LINKEDIN_SECRET,
+  callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
+  scope: ['r_emailaddress', 'r_liteprofile'],
+  state: true
+}, function(accessToken, refreshToken, profile, done) {
+    console.log(profile);
+    User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+}));
 
 app.get("/", function(req,res){
     res.render("splash");
 });
 
-
 app.get("/login", function(req,res){
     res.render("login");
 });
+
+
 
 app.get("/homepage", function(req,res){
   if (req.isAuthenticated()){
@@ -81,6 +109,19 @@ app.get("/register", function(req, res){
 });
 
 
+app.get('/auth/linkedin',
+  passport.authenticate('linkedin'),
+  function(req, res){
+  });
+
+app.get('/auth/linkedin/callback', 
+  passport.authenticate('linkedin', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/homepage');
+  });
+
+
 app.post("/register", function(req, res){
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
@@ -90,7 +131,7 @@ app.post("/register", function(req, res){
       passport.authenticate("local")(req, res, function(){
       res.redirect("/homepage");
           const user = new User ({
-          email: req.body.username,
+          username: req.body.username,
           password: req.body.password
           });
       })
@@ -99,12 +140,24 @@ app.post("/register", function(req, res){
  });
 
 
-app.post("/login", 
-      passport.authenticate("local", {
-        successRedirect: "/homepage",
-        failureRedirect: "/login",
-        failureMessage: "incorrect password"
-    }));
+app.post("/login", function(req, res){
+
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+
+  req.login(user, function(err){
+    if (err) {
+      return("Incorrect login or password");
+      console.log(err);
+    } else {
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/homepage");
+      });
+    }
+  });
+});
 
 
 let port = process.env.PORT;
