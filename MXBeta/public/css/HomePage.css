@@ -155,7 +155,7 @@ body {
   border-radius: 15px;
 }
 
-.profileImage {
+.profileImage img {
   background-color: rgb(69,158,155);
   text-align: center;
   display: block;
@@ -165,6 +165,10 @@ body {
   width: 100px;`
   height: 100px;
   border: 4px white solid;
+  border-radius: 50%;
+}
+
+.profileImage img {
   border-radius: 50%;
 }
 

@@ -41,6 +41,7 @@ const userSchema = new mongoose.Schema ({
   lname: String,
   linkedinID: String,
   email: String,
+  profilePicture: String,
   password: String
   }, {
     collection: 'user'
@@ -73,10 +74,11 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
-    const profileData = JSON.parse(profile._raw)
-    console.log(profile.emails);
+    const profileData = JSON.parse(profile._raw);
+    const email = profile.emails[0].value;
     const firstName = profileData.firstName.localized.en_US;
     const lastName = profileData.lastName.localized.en_US;
+    const profilePicture = profile.photos[2].value;
     User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
       return done(err, user);
     });
@@ -84,6 +86,9 @@ passport.use(new LinkedInStrategy({
     User.updateOne({linkedinID: profile.id}, {$set: {
           fname: firstName,
           lname: lastName,
+          email: email,
+          username: email,
+          profilePicture: profilePicture
       }}, function(err){
       if (err){
         console.log(err);
@@ -103,23 +108,12 @@ app.get("/login", function(req,res){
 });
 
 
-
 app.get("/homepage", function(req,res){
     if (req.isAuthenticated()){
-     res.render("homepage")
+     res.render("homepage", {user: req.user})
       } else {
     res.redirect ("login")
     }
-
-  User.find({"fname": {$ne: null}}, function(err, foundUsers){
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUsers){
-        res.render("homepage", {userInformation: foundUsers});
-      }
-    }
-  });
 });
 
 
@@ -143,7 +137,7 @@ app.get('/auth/linkedin/callback',
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect('/homepage');
 });
 
 
