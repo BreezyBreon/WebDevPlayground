@@ -73,7 +73,10 @@ passport.use(new LinkedInStrategy({
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
-    console.log(profile);
+    const profileData = JSON.parse(profile._raw)
+    // console.log(profileData);
+    const firstName = profileData.firstName.localized.en_US
+    console.log(firstName)
     User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
       return done(err, user);
     });
@@ -90,11 +93,21 @@ app.get("/login", function(req,res){
 
 
 app.get("/homepage", function(req,res){
-  if (req.isAuthenticated()){
+    if (req.isAuthenticated()){
      res.render("homepage")
-  } else {
+      } else {
     res.redirect ("login")
-  }
+    }
+
+  User.find({"username": {$ne: null}}, function(err, foundUsers){
+    if (err) {
+      console.log(err);
+    } else {
+      if (foundUsers){
+        res.render("homepage", {userInformation: foundUsers});
+      }
+    }
+  });
 });
 
 
@@ -112,14 +125,20 @@ app.get("/register", function(req, res){
 app.get('/auth/linkedin',
   passport.authenticate('linkedin'),
   function(req, res){
-  });
+});
 
 app.get('/auth/linkedin/callback', 
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/homepage');
-  });
+    res.redirect('/');
+});
+
+
+
+// Add check for user already registered
+// Add registration through LinkedIn, Google & Facebook
+
 
 
 app.post("/register", function(req, res){
@@ -129,17 +148,25 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-      res.redirect("/homepage");
-          const user = new User ({
-          username: req.body.username,
-          password: req.body.password
-          });
+      	User.updateOne({username: req.body.username}, {$set: {
+      		fname: req.body.fname,
+      		lname: req.body.lname,
+      		email: req.body.username
+  		}}, function(err){
+			if (err){
+				console.log(err);
+			} else {
+				console.log("Success!")
+			}
+		});
+		res.redirect("/homepage");
       })
     }
   });
- });
+});
 
 
+// Check to see if user is already registered through traditional user registration
 app.post("/login", function(req, res){
 
   const user = new User({
