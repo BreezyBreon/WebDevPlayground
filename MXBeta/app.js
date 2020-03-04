@@ -74,12 +74,24 @@ passport.use(new LinkedInStrategy({
   state: true
 }, function(accessToken, refreshToken, profile, done) {
     const profileData = JSON.parse(profile._raw)
-    // console.log(profileData);
-    const firstName = profileData.firstName.localized.en_US
-    console.log(firstName)
+    console.log(profile.emails);
+    const firstName = profileData.firstName.localized.en_US;
+    const lastName = profileData.lastName.localized.en_US;
     User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
       return done(err, user);
     });
+
+    User.updateOne({linkedinID: profile.id}, {$set: {
+          fname: firstName,
+          lname: lastName,
+      }}, function(err){
+      if (err){
+        console.log(err);
+      } else {
+        console.log("Success!")
+      }
+    });
+
 }));
 
 app.get("/", function(req,res){
@@ -99,7 +111,7 @@ app.get("/homepage", function(req,res){
     res.redirect ("login")
     }
 
-  User.find({"username": {$ne: null}}, function(err, foundUsers){
+  User.find({"fname": {$ne: null}}, function(err, foundUsers){
     if (err) {
       console.log(err);
     } else {
