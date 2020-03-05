@@ -68,8 +68,11 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new LinkedInStrategy({
+
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
+  // add mLab package to Heroku to enable datbase link to MongoDB
+  // callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
   callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
@@ -80,9 +83,6 @@ passport.use(new LinkedInStrategy({
     const lastName = profileData.lastName.localized.en_US;
     const profilePicture = profile.photos[2].value;
     User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
-      return done(err, user);
-    });
-
     User.updateOne({linkedinID: profile.id}, {$set: {
           fname: firstName,
           lname: lastName,
@@ -96,7 +96,8 @@ passport.use(new LinkedInStrategy({
         console.log("Success!")
       }
     });
-
+      return done(err, user);
+    });
 }));
 
 app.get("/", function(req,res){
@@ -133,7 +134,7 @@ app.get('/auth/linkedin',
   function(req, res){
 });
 
-app.get('/auth/linkedin/callback', 
+app.get('/auth/LinkedIn/callback', 
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.

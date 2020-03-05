@@ -70,9 +70,31 @@ body {
   border: rgb(69,158,155) !important;
 }
 
-#_linkedin {
+#_linkedin{
+  height: 40px;
+  margin-top: 0px;
+  font-size: 18px;
+  line-height: 30px !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 
+#_linkedin:hover{
+  background-color: rgba(69,122,178,0.5) !important;
+  border: rgba(69,122,178,0.5) !important;
+}
+
+
+#_google{
+  height: 40px;
+  font-size: 18px;
+  line-height: 30px !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+#_google:hover{
+  background-color: rgba(193,76,60,0.5) !important;
+  border: rgba(193,76,60,0.5) !important;
+}
 
 
 #signinBtn:focus {
@@ -84,7 +106,6 @@ body {
   background-color: rgba(69,158,155,0.5) !important;
   border: rgb(69,158,155) !important;
 }
-
 
 /*specific to register.ejs*/
 
