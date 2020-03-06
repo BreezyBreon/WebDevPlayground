@@ -1,4 +1,4 @@
-  //jshint esversion:6 for test
+    //jshint esversion:6 for test
 
 
 // dontenv files won't commit to github - need locally installed
@@ -74,8 +74,8 @@ passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
-  callbackURL: "http://mentorx.live/auth/LinkedIn/callback",
-  // callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
+  // callbackURL: "https://mentorx.live/auth/LinkedIn/callback",
+  callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
   // callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
