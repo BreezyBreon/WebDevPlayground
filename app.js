@@ -112,13 +112,13 @@ app.get("/login", function(req,res){
 
 
 app.get("/homepage", function(req,res){
-    if (req.isAuthenticated()){
-     res.render("homepage"
-      // , {user: req.user}
-      )
-      } else {
-    res.redirect ("/login")
-    }
+   res.render("homepage");
+
+    // if (req.isAuthenticated()){
+    //  res.render("homepage", {user: req.user})
+    //   } else {
+    // res.redirect ("/login")
+    // }
 });
 
 
