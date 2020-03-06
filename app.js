@@ -18,7 +18,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.set('views', __dirname + '/views/');
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -112,9 +112,9 @@ app.get("/login", function(req,res){
 });
 
 
-app.get("/homepage", function(req,res){
+app.get("/home", function(req,res){
     if (req.isAuthenticated()){
-     res.render("homepage", {user: req.user})
+     res.render("home", {user: req.user})
       } else {
     res.redirect ("/login")
     }
@@ -141,7 +141,7 @@ app.get('/auth/LinkedIn/callback',
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/homepage');
+    res.redirect('/home');
 });
 
 
@@ -169,7 +169,7 @@ app.post("/register", function(req, res){
 				console.log("Success!")
 			}
 		});
-		res.redirect("/homepage");
+		res.redirect("/home");
       })
     }
   });
@@ -190,7 +190,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/homepage");
+        res.redirect("/home");
       });
     }
   });
