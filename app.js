@@ -1,5 +1,7 @@
 //jshint esversion:6 for test
 
+
+// dontenv files won't commit to github - need locally installed
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -68,7 +70,6 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new LinkedInStrategy({
-
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
