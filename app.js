@@ -18,6 +18,7 @@ const app = express();
 
 app.use(express.static("public"));
 
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -112,13 +113,11 @@ app.get("/login", function(req,res){
 
 
 app.get("/homepage", function(req,res){
-   res.render("homepage");
-
-    // if (req.isAuthenticated()){
-    //  res.render("homepage", {user: req.user})
-    //   } else {
-    // res.redirect ("/login")
-    // }
+    if (req.isAuthenticated()){
+     res.render("homepage", {user: req.user})
+      } else {
+    res.redirect ("/login")
+    }
 });
 
 
