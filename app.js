@@ -1,4 +1,4 @@
-//jshint esversion:6 for test
+  //jshint esversion:6 for test
 
 
 // dontenv files won't commit to github - need locally installed
