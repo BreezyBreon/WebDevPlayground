@@ -17,6 +17,7 @@ const findOrCreate = require('mongoose-findorcreate');
 const app = express();
 
 app.use(express.static("public"));
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -112,7 +113,9 @@ app.get("/login", function(req,res){
 
 app.get("/homepage", function(req,res){
     if (req.isAuthenticated()){
-     res.render("homepage", {user: req.user})
+     res.render("homepage"
+      // , {user: req.user}
+      )
       } else {
     res.redirect ("/login")
     }
