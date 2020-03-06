@@ -18,7 +18,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -61,15 +61,15 @@ const User = new mongoose.model("User", userSchema);
 // Serialise allows cookies and deserialize removes cookie
 passport.use(User.createStrategy());
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
+// passport.serializeUser(function(user, done) {
+//   done(null, user.id);
+// });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
+// passport.deserializeUser(function(id, done) {
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
 
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
