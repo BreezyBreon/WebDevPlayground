@@ -18,7 +18,7 @@ const app = express();
 
 app.use(express.static("public"));
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/views/');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
@@ -76,7 +76,7 @@ passport.use(new LinkedInStrategy({
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
   callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
-  // callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
+  callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
