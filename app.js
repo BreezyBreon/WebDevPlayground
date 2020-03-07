@@ -11,6 +11,7 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
 
@@ -70,13 +71,15 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+
+// LinkedIn OAuth Passport Strategy
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_ID,
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
   // callbackURL: "https://mentorx.live/auth/LinkedIn/callback",
-  callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
-  // callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
+  // callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
+  callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
@@ -102,6 +105,22 @@ passport.use(new LinkedInStrategy({
       return done(err, user);
     });
 }));
+
+// Google OAuth Passport Strategy
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    // callbackURL: "http://www.mentorx.live/auth/google/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      console.log(profile);   
+      return cb(err, user);
+    });
+  }
+));
+
 
 app.get("/", function(req,res){
     res.render("splash");
@@ -132,6 +151,7 @@ app.get("/register", function(req, res){
 });
 
 
+// Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
   passport.authenticate('linkedin'),
   function(req, res){
@@ -144,10 +164,18 @@ app.get('/auth/LinkedIn/callback',
     res.redirect('/home');
 });
 
+// Authentication requests for Google OAuth
+app.get("/auth/google",
+  passport.authenticate("google", {scope: ["profile"]}));
 
+app.get("/auth/google/callback",
+  passport.authenticate("google", {failureRedirect: "/login"}),
+  function(req, res){
+    res.redirect("/home");
+  });
 
 // Add check for user already registered
-// Add registration through LinkedIn, Google & Facebook
+// Add registration through Google
 
 
 

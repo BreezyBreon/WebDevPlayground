@@ -136,7 +136,7 @@ body {
     margin-bottom: 20px;
     background: #fff;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 40px;
+    padding: 20px;
   }
   .signup-form a {
     color: #007bff;
@@ -220,3 +220,15 @@ body {
     font-size: 20px;
   }
 
+  #_registerlogin {
+    margin-top: 5%;
+  }
+
+  #_registerButtons {
+    width: 30%;
+    line-height: 28px;
+  }
+
+  .linkedinRegister {
+    margin-right: 20%;
+  }
