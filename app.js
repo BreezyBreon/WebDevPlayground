@@ -81,7 +81,7 @@ passport.use(new LinkedInStrategy({
   // add mLab package to Heroku to enable datbase link to MongoDB
   // callbackURL: "https://mentorx.live/auth/LinkedIn/callback",
   callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
-  callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
+  // callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
