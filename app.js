@@ -41,10 +41,12 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 mongoose.set('useCreateIndex', true);
 
 const userSchema = new mongoose.Schema ({
+  googleID: String,
+  linkedinID: String,
   fname: String,
   lname: String,
-  linkedinID: String,
   email: String,
+  username: String,
   profilePicture: String,
   password: String
   }, {
@@ -78,7 +80,7 @@ passport.use(new LinkedInStrategy({
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
   // callbackURL: "https://mentorx.live/auth/LinkedIn/callback",
-  // callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
+  callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
   callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
@@ -109,12 +111,29 @@ passport.use(new LinkedInStrategy({
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/callback",
-}, function(accessToken, refreshToken, profile, done) {
-    const firstName = profile.name.given_name;
-    const lastName = profile.name.family_name;
-    User.findOrCreate({ firstName: profile.id }, function (err, user) {
-      return done(err, user);
+  callbackURL: "https://mentorx-live.herokuapp.com/auth/google/callback",
+  // callbackURL: "http://localhost:3000/auth/google/callback",
+  userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+}, function(accessToken, refreshToken, email, profile, cb) {
+    const firstName = profile._json.given_name;
+    const lastName = profile._json.family_name;
+    const gmail = profile._json.email;
+    const profilePicture = profile._json.picture;
+    User.findOrCreate({ googleID: profile.id }, function (err, user) {
+    User.updateOne({googleID: profile.id}, {$set: {
+      fname: firstName,
+      lname: lastName,
+      email: gmail,
+      username: gmail,
+      profilePicture: profilePicture
+      }}, function(err){
+      if (err){
+        console.log(err);
+      } else {
+        console.log("Success!")
+      }
+    });
+      return cb(err, user);
     });
 }));
 
@@ -165,7 +184,8 @@ app.get('/auth/LinkedIn/callback',
 
 // Authentication requests for Google OAuth
 app.get("/auth/google",
-  passport.authenticate("google", {scope: ["profile"]}));
+  passport.authenticate("google", { scope: ["profile", "email"] })
+  );
 
 app.get("/auth/google/callback",
   passport.authenticate("google", {failureRedirect: "/login"}),
