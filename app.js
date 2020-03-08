@@ -106,20 +106,19 @@ passport.use(new LinkedInStrategy({
     });
 }));
 
-// Google OAuth Passport Strategy
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback",
-    // callbackURL: "http://www.mentorx.live/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      console.log(profile);   
-      return cb(err, user);
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/google/callback",
+}, function(accessToken, refreshToken, profile, done) {
+    const firstName = profile.name.given_name;
+    const lastName = profile.name.family_name;
+    User.findOrCreate({ firstName: profile.id }, function (err, user) {
+      return done(err, user);
     });
-  }
-));
+}));
+
+
 
 
 app.get("/", function(req,res){
