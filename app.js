@@ -168,6 +168,10 @@ app.get("/register", function(req, res){
 	res.render("register")
 });
 
+app.get("/myprofile", function(req, res){
+	res.render("myprofile")
+});
+
 
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',

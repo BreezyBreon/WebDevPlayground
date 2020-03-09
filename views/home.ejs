@@ -1,24 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
 
-  <meta charset="utf-8">
-   <!-- <link rel="shortcut icon" href="css/images/XLogo2.png"> -->
-  <!-- link to logo that goes on the browser tab -->
-  <link rel="icon" href="css/images/XLogo2.png">
-  <!-- Meta tag to define the width of the webpage relative to the device it is rendered on, intiial scale of 1 is the zoom level  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- link to latest bootstrap formatting options -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- Link to LogIn screen CSS file -->
-  <link rel="stylesheet" href="css/HomePage.css">
-  <!-- Link to open sans font style -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-
-  <!-- link to jQuery library to power JS coding (primarily menu bar) -->
-  <script src="js/jquery.js"></script>
-  <!-- link to javascript file to hide the menu when clicked out -->
-  <script src="js/Menu.js"></script>
+<%- include('partials/header') %>
+<link rel="stylesheet" href="css/HomePage.css">
 
 
   <title>MentorX</title>
@@ -27,40 +10,7 @@
 
 <body>
   <!-- Menu / Nav Bar -->
-  <div class="topNav">
-      
-    <div class="menuNav">
-      <a href="#menu" i class="fas fa-bars" onclick="document.getElementById('_dropdownMenu').style.display='block'"></a>
-     </div>
-
-    <div class="xLogo">
-      <div class="xLogoText">Mentor</div>
-      <img src="css/images/XLogo2.png">
-    </div>
-
-    <div class="homeNav">
-      <a href="/myprofile" i class="fas fa-user"></a>
-    </div>
-  </div>
-
-
-  <div id="_dropdownMenu" class="modal">
-      <form class="modal-content animate" id="menuModal">
-          <div class="containerMenu">
-              <a href="/homepage">Home</a>
-              <a href="/myprofile">My Profile</a>
-              <a href="/registration">Mentoring</a>
-              <a href="/goals">Goal Setting</a>
-              <a href="/mycalendar">Events</a>
-              <a href="/resources">Resources</a>
-              <a href="/administration">Design Studio</a>
-              <a href="/adminanalytics">Decision Center</a>
-              <a href="/support">Help & Supp</a>
-              <hr>
-              <a href="/logout">Sign Out</a>
-          </div>
-      </form>
-  </div>
+  <%- include('partials/menubar') %>
   <!-- End of Menu / Nav Bar -->
 
   <!-- Start of middle section of page -->
@@ -69,31 +19,31 @@
   	
   	<div id="iconMenu" class="iconMenu">
     		<div id="_mentoringImage">
-  			<a href="Registration.html"><i class="fas fa-user-friends"></i></a>
+  			<a href=""><i class="fas fa-user-friends"></i></a>
     		</div>
   		<div id="_goalsImage">
-       		<a href="Goals.html"><i class="fas fa-trophy"></i></a>
+       		<a href=""><i class="fas fa-trophy"></i></a>
       	</div>
       	<div id="_calendarImage">
-      		<a href="Calendar.html"><i class="fas fa-calendar-alt"></i></a>
+      		<a href=""><i class="fas fa-calendar-alt"></i></a>
       	</div>
       	<div id="_resourcesImage">
-        		<a href="Resources.html"><i class="fas fa-clipboard-list"></i></a>
+        		<a href=""><i class="fas fa-clipboard-list"></i></a>
     		</div>
   		
 
        	<div id="iconText" class="iconText">
           	<div id="_mentoringtextBox" class="_mentoringtextBox">
-              	<a href="Registration.html">MENTORING</a>
+              	<a href="">MENTORING</a>
           	</div>
           	<div id="_goalstextBox" class="_goalstextBox">
-              	<a href="Registration.html">GOALS</a>
+              	<a href="">GOALS</a>
           	</div>
           	<div id="_calendartextBox" class="_calendartextBox">
-              	<a href="Registration.html">EVENTS</a>
+              	<a href="">EVENTS</a>
           	</div>
           	<div id="_resourcestextBox" class="_resourcestextBox">
-              	<a href="Registration.html">RESOURCES</a>
+              	<a href="">RESOURCES</a>
           	</div>
       	</div>
       	<hr>
@@ -105,148 +55,7 @@
   <div class="rightContainer">
     <h2>Upcoming Events</h2>
     <!-- Start of news feed section -->
-    <div class="newsFeed">
-      <div id="newsFeedUpdate1">
-        <div class="newsFeedImage1">
-          <div class="newsFeedImageStock1"> 
-            <i class="fas fa-user"></i>
-          </div> 
-        </div> 
-        <div class="newsFeedUserName1">
-          User Name #1
-        </div>
-        <div class="newsFeedText1">
-          Nothing
-        </div>
-      </div> 
-      
-
-      <div id="newsFeedUpdate2">
-        <div class="newsFeedImage2">
-          <div class="newsFeedImageStock2"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName2">
-          User Name #2
-        </div>
-        <div class="newsFeedText2">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate3">
-        <div class="newsFeedImage3">
-          <div class="newsFeedImageStock3"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName3">
-          User Name #3
-        </div>
-        <div class="newsFeedText3">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate4">
-        <div class="newsFeedImage4">
-          <div class="newsFeedImageStock4"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName4">
-          User Name #4
-        </div>
-        <div class="newsFeedText4">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate5">
-        <div class="newsFeedImage5">
-          <div class="newsFeedImageStock5"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName5">
-          User Name #5
-        </div>
-        <div class="newsFeedText5">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate6">
-        <div class="newsFeedImage6">
-          <div class="newsFeedImageStock6"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName6">
-          User Name #6
-        </div>
-        <div class="newsFeedText6">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate7">
-        <div class="newsFeedImage7">
-          <div class="newsFeedImageStock7"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName7">
-          User Name #7
-        </div>
-        <div class="newsFeedText7">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate8">
-        <div class="newsFeedImage8">
-          <div class="newsFeedImageStock8"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName8">
-          User Name #8
-        </div>
-        <div class="newsFeedText8">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate9">
-        <div class="newsFeedImage9">
-          <div class="newsFeedImageStock9"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName9">
-          User Name #9
-        </div>
-        <div class="newsFeedText9">
-          Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-
-      <div id="newsFeedUpdate10">
-        <div class="newsFeedImage10">
-          <div class="newsFeedImageStock10"> 
-            <i class="fas fa-user"></i>
-          </div>
-        </div>
-        <div class="newsFeedUserName10">
-          User Name #10
-        </div>
-        <div class="newsFeedText10">
-        	Limit to 150 characters, eta consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad Ut enim ad adad
-        </div>
-      </div> 
-    </div>
+    <%- include('partials/newsfeed') %>
     <!-- End of News Feed -->
   </div>
   <!-- End of Right Column -->
@@ -255,7 +64,7 @@
   <div class="leftContainer">
     <div class="profileImage";>
       <div class="profileImageLink">
-          <a href="Profile.html"><img src="<%=user.profilePicture%>"></i></a>   
+          <a href="/myprofile"><img src="<%=user.profilePicture%>"></i></a>   
           <!-- <a href="Profile.html"><i class="fas fa-user"></i></a>    -->
       </div>
     </div>
@@ -266,7 +75,7 @@
       
       <div class="mentorConnection1">
         <div class="mentorImage1">
-          <a href="mentorLink1"><i class="fas fa-user"></i></a>
+          <a href=""><i class="fas fa-user"></i></a>
         </div>
         <div class="mentorName1">
           Mentor Connection #1
@@ -278,7 +87,7 @@
 
         <div class="mentorConnection2">
           <div class="mentorImage2">
-            <a href="mentorLink2"><i class="fas fa-user"></i></a>
+            <a href=""><i class="fas fa-user"></i></a>
           </div>
           <div class="mentorName2">
             Mentor Connection #1
@@ -290,7 +99,7 @@
 
         <div class="mentorConnection3">
           <div class="mentorImage3">
-            <a href="mentorLink3"><i class="fas fa-user"></i></a>
+            <a href=""><i class="fas fa-user"></i></a>
           </div>
           <div class="mentorName3">
             Mentor Connection #1
