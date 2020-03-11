@@ -80,8 +80,8 @@ passport.use(new LinkedInStrategy({
   clientSecret: process.env.LINKEDIN_SECRET,
   // add mLab package to Heroku to enable datbase link to MongoDB
   // callbackURL: "https://mentorx.live/auth/LinkedIn/callback",
-  callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
-  // callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
+  // callbackURL: "https://mentorx-live.herokuapp.com/auth/LinkedIn/callback",
+  callbackURL: "http://localhost:3000/auth/LinkedIn/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 }, function(accessToken, refreshToken, profile, done) {
@@ -90,6 +90,7 @@ passport.use(new LinkedInStrategy({
     const firstName = profileData.firstName.localized.en_US;
     const lastName = profileData.lastName.localized.en_US;
     const profilePicture = profile.photos[2].value;
+    console.log(profile)
     User.findOrCreate({ linkedinID: profile.id }, function (err, user) {
     User.updateOne({linkedinID: profile.id}, {$set: {
           fname: firstName,
@@ -170,6 +171,10 @@ app.get("/register", function(req, res){
 
 app.get("/myprofile", function(req, res){
 	res.render("myprofile")
+});
+
+app.get("/welcome", function(req, res){
+  res.render("welcome")
 });
 
 
