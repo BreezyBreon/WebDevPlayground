@@ -1,0 +1,16 @@
+html,
+body {
+  height: 100%;
+  overflow: auto; 
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: top;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: rgb(240,241,248);
+}
+
