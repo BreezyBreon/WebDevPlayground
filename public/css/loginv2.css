@@ -4,11 +4,12 @@
 
 
 
-body {
-	margin: 0;
-	padding: 0;
-  font-family: "Segoe UI",Arial,sans-serif;
-	background-color: #364045;
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+  background-color: #f0f1f8;
+  background-image: -webkit-linear-gradient(80deg, #459e9b 50%, #f0f1f8 50%)
 }
 
 
