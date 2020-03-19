@@ -145,10 +145,8 @@ app.get("/", function(req,res){
     res.render("splash");
 });
 
-// testing different login
 app.get("/login", function(req,res){
-    // res.render("login");
-    res.render("splash");
+    res.render("login");
 });
 
 
