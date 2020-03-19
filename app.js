@@ -53,6 +53,11 @@ const userSchema = new mongoose.Schema ({
     collection: 'user'
   });
 
+  //user profile data
+
+
+
+
 // Passport heavy lifting to salt and hash encrypted information
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -184,7 +189,7 @@ app.get('/auth/linkedin',
   function(req, res){
 });
 
-app.get('/auth/LinkedIn/callback', 
+app.get('/auth/LinkedIn/callback',
   passport.authenticate('linkedin', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
@@ -263,3 +268,12 @@ app.listen(port, function() {
 });
 
 
+
+
+User.find( function(err, users) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(users);
+  }
+});
