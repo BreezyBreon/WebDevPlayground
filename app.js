@@ -179,7 +179,13 @@ app.get("/myprofile", function(req, res){
 });
 
 app.get("/welcome", function(req, res){
-  res.render("welcome")
+  
+  User.find( function(err, users) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("welcome", {user: users})
+    }});
 });
 
 
@@ -265,15 +271,4 @@ let port = process.env.PORT;
 
 app.listen(port, function() {
     console.log("Server started Successfully");
-});
-
-
-
-
-User.find( function(err, users) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(users);
-  }
 });
