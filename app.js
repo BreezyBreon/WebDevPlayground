@@ -178,13 +178,13 @@ app.get("/myprofile", function(req, res){
 	res.render("myprofile")
 });
 
-app.get("/welcome", function(req, res){
+app.get("/test", function(req, res){
   
   User.find( function(err, users) {
     if (err) {
       console.log(err);
     } else {
-      res.render("welcome", {user: users})
+      res.render("test", {user: users})
     }});
 });
 

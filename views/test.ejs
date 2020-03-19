@@ -14,7 +14,7 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- <link rel="stylesheet" href="css/styles.css"> -->
-<link rel="stylesheet" href="css/welcome.css">
+<link rel="stylesheet" href="css/test.css">
 
 
 <!-- Custom styles for this template -->
@@ -24,17 +24,11 @@
 </head>
 
 <body class="text-center">
-  <form action="/login" class="form-signin" method="POST">
-  
-    <div class="profileImage">
-          <div class="profileImageLink">
-          <a href="Profile.html"><i class="fas fa-user"></i></a>   
-          </div>
-        </div>
-        <h2><%=user%></h2>
-        <h3>Finance, Class of 2024</h3>
-      <hr>
-  </form>
+  <ul>
+    <% for(var i=0; i<user.length; i++) {%>
+       <li><%= user[i].fname %> <%= user[i].lname %> <%= user[i].email %></li>
+    <% } %>
+    </ul>
 </body>
 
 
