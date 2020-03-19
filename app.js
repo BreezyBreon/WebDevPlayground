@@ -150,8 +150,10 @@ app.get("/", function(req,res){
     res.render("splash");
 });
 
+// testing different login
 app.get("/login", function(req,res){
-    res.render("login");
+    // res.render("login");
+    res.render("splash");
 });
 
 
@@ -159,7 +161,7 @@ app.get("/home", function(req,res){
     if (req.isAuthenticated()){
      res.render("home", {user: req.user})
       } else {
-    res.redirect ("/login")
+    res.redirect ("/")
     }
 });
 

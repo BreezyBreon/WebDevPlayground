@@ -2,24 +2,21 @@
 <html>
 <head>
 
-  <meta charset="utf-8">
-  <link rel="shortcut icon" href="css/images/XLogo2.png">
-  <!-- link to logo that goes on the browser tab -->
-  <link rel="icon" href="css/images/XLogo2.png">
-  <!-- Meta tag to define the width of the webpage relative to the device it is rendered on, intiial scale of 1 is the zoom level  -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- link to latest bootstrap formatting options -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <!-- Link to LogIn screen CSS file -->
   <link rel="stylesheet" href="css/loginv2.css">
-  <!-- Link to open sans font style -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- link to logo that goes on the browser tab -->
+  <link rel="icon" href="css/images/xlogo2.png">
+  <!-- Meta tag to define the width of the webpage relative to the device it is rendered on, intiial scale of 1 is the zoom level  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- link to jQuery library to power JS coding (primarily menu bar) -->
+<!-- AI -->
+  <!-- Link to jquery database of js cod for animations (SB to research) -->
   <script src="js/jquery.js"></script>
-  <!-- link to javascript file to hide the menu when clicked out -->
+  <!-- link to internal js file (see file for notes) -->
   <script src="js/login.js"></script>
 
+
+<!-- AI -->
   <!-- this external link controls the checbox animation on the signup pop up, research if this is even needed (SB to research) -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
 
@@ -29,15 +26,15 @@
 </head>
 <body>
   <!-- centering the first block of text on page -->
-  <center>
-    <div class="initialWelcome">
-      <h1>Welcome to MentorX</h1>
-      <h2><em>Make Your Impact Today</em></h2>        
+	<center>
+		<div class="initialWelcome">
+			<h1>Welcome to MentorX</h1>
+			<h2><em>Make Your Impact Today</em></h2>				
 
         <!-- Log in button that will trigger the first pop up (id01) that is currently hidden -->
-        <input type="button" value="Log in" class="initialLogin" onclick="document.getElementById('id01').style.display='block'">
-     </div>
-  </center>
+				<input type="button" value="Log in" class="initialLogin" onclick="document.getElementById('id01').style.display='block'">
+	   </div>
+	</center>
 
 <div id="id01" class="modal">
   <div class="container" id="id02">
@@ -117,7 +114,7 @@
         <h1 class="welcome">Welcome, #User Name</h1>
         
         <!-- Link to homepage after successful sing in - LT add a delay to direct to home page -->
-        <a class="btn-goback" value="Refresh" onClick="window.location.href = 'HomePage.html'">Home Page</a>
+        <a class="btn-goback" value="Refresh" onClick="window.location.href = 'home.html'">Home Page</a>
       </div>
 
   </div>

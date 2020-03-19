@@ -18,7 +18,7 @@ $(function() {
   $(".success").toggleClass("success-left"); 
   $(".frame").toggleClass("frame-short");
     var timer = setTimeout(function() {
-      window.location='HomePage.html'
+      window.location='/home'
       }, 4000);
   });
 });
