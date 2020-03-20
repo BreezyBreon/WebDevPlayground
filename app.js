@@ -40,6 +40,7 @@ app.use(passport.session());
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.set('useCreateIndex', true);
 
+// UserSchema - works
 const userSchema = new mongoose.Schema ({
   googleID: String,
   linkedinID: String,
@@ -53,16 +54,23 @@ const userSchema = new mongoose.Schema ({
     collection: 'user'
   });
 
-  //user profile data
-
-
-
+// MentorView Schema - WIP
+  const mentorSchema =  new mongoose.Schema ({
+    fname: String,
+    lname: String,
+    email: String,
+    profilePicture: String,
+    }, {
+      collection: 'MentorSelection_vw'
+    });
+  
 
 // Passport heavy lifting to salt and hash encrypted information
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+const Mentor =  new mongoose.model("Mentor", mentorSchema);
 
 // passport local mongoose
 // Serialise allows cookies and deserialize removes cookie
@@ -179,23 +187,12 @@ app.get("/myprofile", function(req, res){
 });
 
 
-const mentorSchema =  Mentor mongoose.Schema ({
-  fname: String,
-  lname: String,
-  email: String,
-  profilePicture: String,
-  }, {
-    collection: 'MentorSelection_vw'
-  });
-
-const Mentor =  Mentor mongoose.model("Mentor", userSchema);
-
 app.get("/test", function(req, res){
-  User.find( function(err, users) {
+  Mentor.find( function(err, mentors) {
     if (err) {
       console.log(err);
     } else {
-      res.render("test", {nmentor: mentors})
+      res.render("test", {mentor: mentors})
     }});
 });
 
@@ -252,7 +249,6 @@ app.post("/register", function(req, res){
     }
   });
 });
-
 
 // Check to see if user is already registered through traditional user registration
 app.post("/login", function(req, res){
