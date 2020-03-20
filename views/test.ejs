@@ -18,17 +18,42 @@
 
 
 <!-- Custom styles for this template -->
-<link href="css/styles.css" rel="stylesheet">
 <link href="css/bootstrap-social.css" rel="stylesheet">
 
 </head>
 
 <body class="text-center">
-  <ul>
+  <section>
+    <div class="container">
+    	<div class="row">
     <% for(var i=0; i<user.length; i++) {%>
-       <li><%= user[i].fname %> <%= user[i].lname %> <%= user[i].email %></li>
+       
+      <div class="col-md-4">
+        <div class="card profile-card-3">
+            <div class="background-block">
+                <img src="" alt="" class="background"/>
+            </div>
+            <div class="profile-thumb-block">
+              
+              <div class="profile">
+              <div class="mentorImage">
+                <a href=""><i class="fas fa-user"></i></a>
+              </div>
+            </div>
+              
+              <!-- <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="" class="profile"/> -->
+            </div>
+            <div class="card-content">
+                <h2><%= user[i].fname %> <%= user[i].lname %><small><%= user[i].email %></small></h3>
+                <p><button class="connectBtn">Connect</button></p>
+                </div>
+            </div>
+        </div>
     <% } %>
-    </ul>
+
+      </div>
+    </div>
+  </section>
 </body>
 
 
