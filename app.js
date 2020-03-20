@@ -178,13 +178,24 @@ app.get("/myprofile", function(req, res){
 	res.render("myprofile")
 });
 
+
+const mentorSchema =  Mentor mongoose.Schema ({
+  fname: String,
+  lname: String,
+  email: String,
+  profilePicture: String,
+  }, {
+    collection: 'MentorSelection_vw'
+  });
+
+const Mentor =  Mentor mongoose.model("Mentor", userSchema);
+
 app.get("/test", function(req, res){
-  
   User.find( function(err, users) {
     if (err) {
       console.log(err);
     } else {
-      res.render("test", {user: users})
+      res.render("test", {nmentor: mentors})
     }});
 });
 
