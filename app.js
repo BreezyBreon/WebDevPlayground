@@ -156,6 +156,7 @@ passport.use(new GoogleStrategy({
 
 app.get("/", function(req,res){
     res.render("splash");
+    console.log(req.user)
 });
 
 app.get("/login", function(req,res){
@@ -183,7 +184,8 @@ app.get("/register", function(req, res){
 });
 
 app.get("/myprofile", function(req, res){
-	res.render("myprofile")
+  res.render("myprofile")
+  console.log(req.user)
 });
 
 
@@ -192,10 +194,9 @@ app.get("/test", function(req, res){
     if (err) {
       console.log(err);
     } else {
-      res.render("test", {mentor: mentors})
+      res.render("test", {mentor: mentors, user: req.user})
     }});
 });
-
 
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
