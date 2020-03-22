@@ -68,10 +68,39 @@ body {
 
 #signinBtn {
   background-color: rgb(69,158,155) !important;
-  border: rgb(69,158,155) !important;
+  border-color: rgb(69,158,155) !important;
 }
 
-#_linkedin{
+#signinBtn:focus {
+  background-color: rgba(69,158,155,0.5) !important;
+  border-color: rgba(69,158,155,0.5) !important;
+}
+
+#signinBtn:hover {
+  background-color: rgba(69,158,155,0.5) !important;
+  border-color: rgb(69,158,155) !important;
+}
+
+#registerBtn {
+  background-color: white!important;
+  color: rgb(69,158,155);
+  margin-top: -10px;
+  border-color:rgb(69,158,155);
+  border-width: medium !important;
+}
+
+#registerBtn:focus {
+  background-color: rgba(69,158,155,0.5) !important;
+  border-color: rgba(69,158,155,0.5) !important;
+}
+
+#registerBtn:hover {
+  background-color: rgba(69,158,155,0.5) !important;
+  color: white;
+  border-color: rgb(69,158,155) !important;
+}
+
+/* #_linkedin{
   height: 40px;
   margin-top: 0px;
   font-size: 18px;
@@ -95,18 +124,8 @@ body {
 #_google:hover{
   background-color: rgba(193,76,60,0.5) !important;
   border: rgba(193,76,60,0.5) !important;
-}
+} */
 
-
-#signinBtn:focus {
-  background-color: rgba(69,158,155,0.5) !important;
-  border: rgba(69,158,155,0.5) !important;
-}
-
-#signinBtn:hover {
-  background-color: rgba(69,158,155,0.5) !important;
-  border: rgb(69,158,155) !important;
-}
 
 /*specific to register.ejs*/
 
@@ -190,7 +209,7 @@ body {
     top: -22px;
     z-index: 1;
   }
-    .social-btn .btn {
+    /* .social-btn .btn {
     color: #fff;
         margin: 10px 0 0 15px;
     font-size: 15px;
@@ -231,4 +250,14 @@ body {
 
   .linkedinRegister {
     margin-right: 20%;
+  } */
+
+  .xSmall {
+    font-size: 20px;
+  }
+
+  .text-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
