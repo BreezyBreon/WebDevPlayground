@@ -49,13 +49,15 @@ const userSchema = new mongoose.Schema ({
   email: String,
   username: String,
   profilePicture: String,
-  password: String
+  password: String,
+  mentorID: String
   }, {
     collection: 'user'
   });
 
 // MentorView Schema - WIP
   const mentorSchema =  new mongoose.Schema ({
+    _id: String,
     fname: String,
     lname: String,
     email: String,
@@ -270,6 +272,18 @@ app.post("/login", function(req, res){
     }
   });
 });
+
+app.post("/test", function(req, res){
+  // const userID = req.user.id;
+  const mentorID = req.mentor._id;
+  console.log(mentorID); 
+  // User.findOneAndUpdate({id: user.id}, {$pull: {users: {mentorID: "aabbccddeeff"}}}, function(err, foundUser){
+	// 		if(!err){
+	// 			res.redirect("/home")
+  //     }
+  //   });    
+});
+
 
 
 let port = process.env.PORT;

@@ -23,12 +23,11 @@
 </head>
 
 <body class="text-center">
-  <section>
-    <h1><%= user.fname %> <%= user.lname %></h1>
+    <section>
+    <h1><%= user.fname %> <%= user.email %></h1>
     <div class="container">
     	<div class="row">
     <% for(var i=0; i<mentor.length; i++) {%>
-       
       <div class="col-md-4">
         <div class="card profile-card-3">
             <div class="background-block">
@@ -44,11 +43,14 @@
               
             </div>
             <div class="card-content">
-                <h2><%= mentor[i].fname %> <%= mentor[i].lname %><small><%= mentor[i].email %></small></h3>
+              <form action="/test" method="POST">  
+                  <h2><%= mentor[i].fname %> <%= mentor[i].lname %><small><%= mentor[i].email %></small></h3>
+                  <div><%= mentor[i]._id %></div>
                   <p><button class="connectBtn" type="submit">Connect</button></p>
+                  </form>
                 </div>
             </div>
-        </div>
+          </div>
     <% } %>
 
       </div>
