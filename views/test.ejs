@@ -43,11 +43,13 @@
               
             </div>
             <div class="card-content">
-              <form action="/test" method="POST">  
-                  <h2><%= mentor[i].fname %> <%= mentor[i].lname %><small><%= mentor[i].email %></small></h3>
-                  <div><%= mentor[i]._id %></div>
+              <form action="/test" method="POST">
+                
+                  <input type="hidden" name="mentorID" value="<%= mentor[i]._id %>">
+
+                  <h2><%= mentor[i].fname %> <%= mentor[i].lname %><small><%= mentor[i].email %></small></h2>
                   <p><button class="connectBtn" type="submit">Connect</button></p>
-                  </form>
+              </form>
                 </div>
             </div>
           </div>

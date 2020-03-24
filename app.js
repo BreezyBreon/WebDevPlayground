@@ -273,23 +273,19 @@ app.post("/login", function(req, res){
   });
 });
 
-app.post("/test", function(req, res){
-  // const userID = req.user.id;
-  const mentorID = req.mentor._id;
-  console.log(mentorID); 
-  // User.findOneAndUpdate({id: user.id}, {$pull: {users: {mentorID: "aabbccddeeff"}}}, function(err, foundUser){
-	// 		if(!err){
-	// 			res.redirect("/home")
-  //     }
-  //   });    
+app.post("/test", function(req, res){  
+  console.log(Date());
+  console.log(req.user.id);
+  console.log(req.body.mentorID); 
 });
-
 
 
 let port = process.env.PORT;
   if (port == null || port =="") {
     port = 3000;
   }
+
+
 
 app.listen(port, function() {
     console.log("Server started Successfully");
