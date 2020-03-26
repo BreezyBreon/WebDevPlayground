@@ -261,3 +261,19 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #profile-photo {
+    height: 150px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    background-color: rgb(193,193,193);
+    opacity: 1;
+    transition: ease-in 1s;
+    border: solid 3px rgb(69,158,155);
+  }
+
+  .vertical-center{
+    margin-top: 15%;
+  }

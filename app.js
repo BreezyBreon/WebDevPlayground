@@ -200,6 +200,11 @@ app.get("/test", function(req, res){
     }});
 });
 
+
+app.get("/welcome", function(req, res){
+  res.render("welcome", {user: req.user})
+});
+
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
   passport.authenticate('linkedin'),
@@ -267,7 +272,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/home");
+        res.redirect("/welcome");
       });
     }
   });
