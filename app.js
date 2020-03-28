@@ -192,12 +192,12 @@ app.get("/myprofile", function(req, res){
 });
 
 
-app.get("/test", function(req, res){
+app.get("/viewMentors", function(req, res){
   Mentor.find( function(err, mentors) {
     if (err) {
       console.log(err);
     } else {
-      res.render("test", {mentor: mentors, user: req.user})
+      res.render("viewMentors", {mentor: mentors, user: req.user})
     }});
 });
 
@@ -210,6 +210,13 @@ app.get("/welcome", function(req, res){
       console.log(req.user.profilePicture)
     };
 });
+
+app.get("/launch", function(req, res){
+  res.render("launch", {user: req.user})
+});
+
+
+
 
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
@@ -284,7 +291,7 @@ app.post("/login", function(req, res){
   });
 });
 
-app.post("/test", function(req, res){  
+app.post("/viewMentors", function(req, res){  
   console.log(Date());
   console.log(req.user.id);
   console.log(req.body.mentorID); 
@@ -295,10 +302,6 @@ let port = process.env.PORT;
   if (port == null || port =="") {
     port = 3000;
   }
-
-
-
-
 
 
 app.listen(port, function() {

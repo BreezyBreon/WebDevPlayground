@@ -298,3 +298,66 @@ body {
     border: 4px white solid;
     border-radius: 50%;
   }
+  .game-board {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    color: rgb(69,158,155);
+    border-radius: 10px;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  }
+
+  .box1 {
+    border-right: 6px solid rgba(69,158,155,0.2);
+    border-bottom: 6px solid rgba(69,158,155,0.2);
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box2 {
+    border-bottom: 6px solid rgba(69,158,155,0.2);
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box3 {
+    border-right: 6px solid rgba(69,158,155,0.2);
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box3 img {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .box4 {
+    border-radius: 2px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .game-board h2{
+    font-size: 0.3em;
+    margin-top: 0.5em;
+  }
