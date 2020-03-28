@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+
+  <!-- link to logo that goes on the browser tab -->
+  <link rel="icon" href="../Images/Logo/XLogo.png">
+  <!-- Meta tag to define the width of the webpage relative to the device it is rendered on, intiial scale of 1 is the zoom level  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- link to latest bootstrap formatting options -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Link to LogIn screen CSS file -->
+  <link type="text/css" rel="stylesheet" href="../css/Profile.css">
+  <!-- Link to open sans font style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- link to jQuery library to power JS coding (primarily menu bar) -->
+  <script src="../javascript/Library/jquery.js"></script>
+  <!-- link to javascript file to hide the menu when clicked out -->
+  <script src="../Javascript/menu.js"></script>
+
+
+  <title>MentorX</title>
+
+</head>
+
+<body>
+  <!-- Menu / Nav Bar -->
+  <div class="topNav">
+      
+    <div class="menuNav">
+      <a href="#menu" i class="fas fa-bars" onclick="document.getElementById('_dropdownMenu').style.display='block'"></a>
+     </div>
+
+    <div class="xLogo">
+      <div class="xLogoText">Mentor</div>
+      <img src="../Images/Logo/XLogo.png">
+    </div>
+
+    <div class="homeNav">
+      <a href="profileImageHome.html" i class="fas fa-user"></a>
+    </div>
+  </div>
+
+
+  <div id="_dropdownMenu" class="modal">
+      <form class="modal-content animate" id="menuModal">
+          <div class="containerMenu">
+              <a href="HomePage.html">Home</a>
+              <a href="Profile.html">My Profile</a>
+              <a href="Registration.html">Mentoring</a>
+              <a href="Goals.html">Goal Setting</a>
+              <a href="Calendar.html">Events</a>
+              <a href="Resources.html">Resources</a>
+              <a href="Administration.html">Design Studio</a>
+              <a href="AdminAnalytics.html">Decision Center</a>
+              <a href="HelpSupport.html">Help & Supp</a>
+              <hr>
+              <a href="Splash.html">Sign Out</a>
+          </div>
+      </form>
+  </div>
+  <!-- End of Menu / Nav Bar -->
+
+  <!-- Profile Container -->
+
+  <!-- Start of profile section -->
+  <div class="profileContainer">
+    <div class="profileSection">
+      <div class="coverPhoto">
+        <div class="editCoverPhoto">
+          <a href=""><i class="fas fa-edit"></i>
+
+          </a>
+        </div>
+      </div>
+      <div class="profilePhoto"> 
+        <div class="profileImageLink">
+          <a href="uploadPicture"><i class="fas fa-user"></i></a>   
+        </div>
+        <div class="editProfilePicture">
+          <a href=""><i class="fas fa-edit"></i></a>
+        </div>
+      </div>
+      <div class="profileSnapshot">
+        <div class="profileUsername">
+          Stogie Deadbolt Stogsdite
+        </div>
+        <div class="profileMajor">
+          Finance, Class of 2022
+        </div>        
+        <div class="profileHometown">
+          Orlando, Florida
+        </div>
+        <div class="editProfileInfo">
+          <a href=""><i class="fas fa-edit"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start of About Me section -->
+    <div class="profileAboutMe">
+      <div class="profileAboutMeTitle">
+        About Me
+      </div>
+      <div class="profileAboutMeText">
+        This is the about me section where you can write an intro about yourself
+      </div>
+      <div class="editAboutMe">
+        <a href=""><i class="fas fa-edit"></i></a>
+      </div>  
+    </div>
+
+    <!-- Start of Work Experience section -->
+    <div class="profileWorkExperience">
+      <div class="profileWorkExperienceTitle">
+        Professional Experience
+      </div>
+      <div class="editWorkExperience">
+        <a href=""><i class="fas fa-edit"></i></a>
+      </div>  
+    </div>
+
+    <!-- Start of Extracurriculars section -->
+    <div class="profileExtracurriculars">
+      <div class="profileExtracurricularsTitle">
+        Extracurriculars
+      </div>
+      <div class="editExtracurriculars">
+        <a href=""><i class="fas fa-edit"></i></a>
+      </div>  
+    </div>
+
+    <!-- Start of Hobbies section -->
+    <div class="profileHobbies">
+      <div class="profileHobbiesTitle">
+        Hobbies / Interests
+      </div>
+      <div class="editHobbies">
+        <a href=""><i class="fas fa-edit"></i></a>
+      </div>  
+    </div>
+
+    <!-- Start of Match comparison section -->
+    <div class="matchComparison">
+      <div class="matchComparisonTitle">
+        Match Comparison
+      </div>
+    </div>
+</div>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+
+</body>
+</html>
+
+
+<!-- Ideas to implement -->
+
+<!-- Upload new image (PHP) -->
+<!-- https://www.w3schools.com/php/php_file_upload.asp -->
+
+
+<!-- Image shadow modal for profile and cover photos -->
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img -->
+
+
+
+
