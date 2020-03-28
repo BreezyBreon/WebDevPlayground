@@ -5,14 +5,15 @@
 require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
+const ejs = require("ejs");
 const passportLocalMongoose = require("passport-local-mongoose");
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+
 
 
 const app = express();
@@ -203,6 +204,11 @@ app.get("/test", function(req, res){
 
 app.get("/welcome", function(req, res){
   res.render("welcome", {user: req.user})
+    if (req.user.profilePicture == null) {
+      console.log("no profile picture")
+    } else {  
+      console.log(req.user.profilePicture)
+    };
 });
 
 // Authentication requests for Linkedin OAuth
@@ -292,6 +298,11 @@ let port = process.env.PORT;
 
 
 
+
+
+
 app.listen(port, function() {
     console.log("Server started Successfully");
 });
+
+

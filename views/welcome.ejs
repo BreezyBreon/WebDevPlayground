@@ -21,6 +21,13 @@
 <body class="text-center">
 <div class="vertical-center">
     <div class="mb-4" id="profile-photo">
+        <div class="profileImageLink">
+            <% if(user.profilePicture == null){ %>
+                <i class="fas fa-user"></i>
+            <% } else {  %>
+                <img src="<%=user.profilePicture%>"></i>
+            <% } %>
+        </div>   
     </div>
     
     <h1  id="loginHeader" class="h3 mb-3 font-weight-normal">Welcome Back, <%=user.fname%></h1>

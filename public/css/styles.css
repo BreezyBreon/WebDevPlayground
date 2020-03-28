@@ -277,3 +277,24 @@ body {
   .vertical-center{
     margin-top: 15%;
   }
+
+  .profileImageLink i {
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 80px;
+    padding: 25px;
+    color:rgb(69,158,155);
+  }
+
+  .profileImageLink img {
+    background-color: rgb(69,158,155);
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 1005;
+    border: 4px white solid;
+    border-radius: 50%;
+  }
