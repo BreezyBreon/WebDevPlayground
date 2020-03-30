@@ -3,7 +3,7 @@ $(function(){
 	var modal = document.getElementById('_dropdownMenu');
 	window.onclick = function(event) {
   		if (event.target == modal) {
-    	modal.style.display = "none";
+		modal.style.display = "none";
   		}
 	}
 });

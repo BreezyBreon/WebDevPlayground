@@ -175,6 +175,10 @@ app.get("/home", function(req,res){
     }
 });
 
+app.get("/mentoring", function(req,res){
+   res.render("mentoring", {user: req.user})
+});
+
 
 app.get("/logout", function(req, res){
   req.logout();
