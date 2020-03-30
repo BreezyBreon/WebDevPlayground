@@ -16,10 +16,16 @@
 <!-- Custom styles for this template -->
 <link rel="stylesheet" href="css/styles.css">
 
-</head>
 
+  <!-- link to jQuery library to power JS coding (primarily menu bar) -->
+  <script src="js/jquery.js"></script>
+  <!-- link to javascript file to hide the menu when clicked out -->
+  <script src="js/Menu.js"></script>
+  
+</head>
+<%- include partials/navBar -%>
 <body class="text-center">
-<div class="vertical-center">
+<div class="bodyContent">
     <div class="mb-4" id="profile-photo">
         <div class="profileImageLink">
             <% if(user.profilePicture == null){ %>
@@ -30,18 +36,42 @@
         </div>   
     </div>
     
-    <h1  id="loginHeader" class="h3 mb-3 font-weight-normal"><%=user.fname%> <%=user.lname%></h1>
-
+    <h1  id="loginHeader" class="h3 mb-3 font-weight-normal"><%=user.fname%> <%=user.lname%></h1> 
 
     <div class="game-board">
-        <div class="box1"><i class="fas fa-user"><h2>My Profile</h2></i></div>
-        <div class="box2"><i class="fas fa-calendar"><h2>Events</h2></i></div>
-        <div class="box3"><img src="css/images/XLogo2.png"></img></div>
-        <div class="box4"><i class="fas fa-users"><h2>Mentoring</h2></i></div>
-      </div>
+            <div class="box1">
+                <a href="">
+                    <i class="fas fa-user">
+                        <h2>My Profile</h2>
+                    </i>
+                </a>
+            </div>
+            <div class="box2">
+                <a href="">
+                    <i class="fas fa-calendar">
+                        <h2>Events</h2>
+                    </i>
+                </a>
+            </div>
+        
+        <div class="box3">
+            <a href="">
+                <img src="css/images/XLogo2.png">
+                </img>
+            </a>
+        </div>
 
-
+        <div class="box4">
+            <a href="/viewMentors">
+                <i class="fas fa-users">
+                    <h2>Mentoring</h2>
+                </i>
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </div>
 
 </html>
+

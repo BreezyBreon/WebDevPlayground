@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(69,158,155);
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+.topnav a:hover {
+  background-color: rgb(240,241,248);
+  color: rgb(69,158,155);
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color:rgb(240,241,248);
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-top: 73.5px;
+    margin-left: 0;
+    background-color: rgba(100,100,100,.7);
+    text-align: left;
+}
+
+.containerMenu {
+    position: absolute;
+    width: 200px;
+    float: left;
+    margin-left: 0;
+}
+
+.modal a{
+  background-color: rgb(69,158,155);
+  color: white;
+  display: block;
+  padding: 12px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.modal a:hover {
+  background-color: white;
+  color: rgb(69,158,155);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.modal hr {
+  width: 100%;
+  margin: auto;
+  border: none;
+  background-color: white;
+  color: white;
+  height: 5px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="#menu"><i class="fa fa-bars" onclick="document.getElementById('_dropdownMenu').style.display='block'"></i></a>
+</div>
+
+<div id="_dropdownMenu" class="modal">
+    <form class="modal-content animate" id="menuModal">
+        <div class="containerMenu">
+            <a href="/launch">Home</a>
+            <a href="">My Profile</a>
+            <a href="/viewMentors">Mentoring</a>
+            <a href="/welcome">Welcome</a>
+            <a href="">Events</a>
+            <a href="">Help & Supp</a>
+            <hr>
+            <a href="/logout">Sign Out</a>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>
