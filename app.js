@@ -51,7 +51,8 @@ const userSchema = new mongoose.Schema ({
   username: String,
   profilePicture: String,
   password: String,
-  mentorID: String
+  mentorID: String,
+  aboutme: String
   }, {
     collection: 'user'
   });
@@ -217,7 +218,12 @@ app.get("/launch", function(req, res){
    res.redirect ("/login")
 }});
 
-
+app.get("/myprofile", function(req, res){
+  if(req.isAuthenticated()){
+    res.render("myprofile", {user: req.user})
+  } else {
+    res.redirect("/login")
+  }});
 
 
 // Authentication requests for Linkedin OAuth
@@ -297,6 +303,22 @@ app.post("/viewMentors", function(req, res){
   console.log(Date());
   console.log(req.user.id);
   console.log(req.body.mentorID); 
+});
+
+app.post("/myprofile", function(req, res){
+  User.updateOne({username: req.user.username}, {upsert: true}, {$set: {
+      		fname: req.body.fname,
+      		lname: req.body.lname,
+          email: req.body.username,
+          aboutme: req.body.aboutme
+  		}}, function(err){
+			if (err){
+				console.log(err);
+			} else {
+				console.log("Success!")
+			}
+    });
+    res.redirect("/myprofile");
 });
 
 
