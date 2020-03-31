@@ -190,11 +190,6 @@ app.get("/register", function(req, res){
 	res.render("register")
 });
 
-app.get("/myprofile", function(req, res){
-  res.render("myprofile")
-  console.log(req.user)
-});
-
 
 app.get("/viewMentors", function(req, res){
   Mentor.find( function(err, mentors) {
@@ -216,8 +211,11 @@ app.get("/welcome", function(req, res){
 });
 
 app.get("/launch", function(req, res){
-  res.render("launch", {user: req.user})
-});
+  if (req.isAuthenticated()){
+    res.render("launch", {user: req.user})
+     } else {
+   res.redirect ("/login")
+}});
 
 
 
