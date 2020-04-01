@@ -273,7 +273,7 @@ app.post("/register", function(req, res){
 				console.log("Success!")
 			}
 		});
-		res.redirect("/home");
+		res.redirect("/welcome");
       })
     }
   });
@@ -293,7 +293,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/welcome");
+        res.redirect("/myprofile");
       });
     }
   });
@@ -305,17 +305,18 @@ app.post("/viewMentors", function(req, res){
   console.log(req.body.mentorID); 
 });
 
+
 app.post("/myprofile", function(req, res){
-  User.updateOne({username: req.user.username}, {upsert: true}, {$set: {
-      		fname: req.body.fname,
-      		lname: req.body.lname,
-          email: req.body.username,
+  User.updateOne({username: req.user.username}, {$set: {
+          fname: req.body.fname,
+          lname: req.body.lname,
+          email: req.body.email,
           aboutme: req.body.aboutme
-  		}}, function(err){
+  		}},  {upsert: true}, function(err){
 			if (err){
 				console.log(err);
 			} else {
-				console.log("Success!")
+        console.log("Success!")
 			}
     });
     res.redirect("/myprofile");
