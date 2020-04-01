@@ -160,7 +160,7 @@ body {
   
   @media screen and (max-width: 500px) /* Mobile */ {
     .signup-form {
-      width: 400px;
+      width: 350px;
     }
   }
   .signup-form {
