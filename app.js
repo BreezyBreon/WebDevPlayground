@@ -293,7 +293,7 @@ app.post("/login", function(req, res){
       console.log(err);
     } else {
       passport.authenticate("local")(req, res, function(){
-        res.redirect("/myprofile");
+        res.redirect("/welcome");
       });
     }
   });
