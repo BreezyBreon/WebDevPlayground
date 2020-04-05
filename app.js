@@ -225,6 +225,13 @@ app.get("/myprofile", function(req, res){
   }});
 
 
+  app.get("/enrollment", function(req, res){
+    if(req.isAuthenticated()){
+      res.render("enrollment", {user: req.user})
+    } else {
+      res.redirect("/login")
+    }});
+
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
   passport.authenticate('linkedin'),
