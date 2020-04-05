@@ -51,10 +51,14 @@ const userSchema = new mongoose.Schema ({
   profilePicture: String,
   password: String,
   mentorID: String,
-  aboutme: String
+  aboutme: String,
+  mentorSelected: String,
   }, {
     collection: 'user'
   });
+
+
+  
 
 // MentorView Schema - WIP
   const mentorSchema =  new mongoose.Schema ({
@@ -159,7 +163,6 @@ passport.use(new GoogleStrategy({
 
 app.get("/", function(req,res){
     res.render("splash");
-    console.log(req.user)
 });
 
 app.get("/login", function(req,res){
@@ -223,6 +226,19 @@ app.get("/myprofile", function(req, res){
   } else {
     res.redirect("/login")
   }});
+
+app.get("/mentorSelection", function(req, res){
+  if(req.isAuthenticated()){
+    User.findById(req.user.mentorSelected, function(err, mentorSelected) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("mentorSelection", {user: req.user, myMentor: mentorSelected})
+      }
+    })
+  } else {
+    res.redirect("/login")
+}});
 
 
 // Authentication requests for Linkedin OAuth
@@ -299,9 +315,20 @@ app.post("/login", function(req, res){
 });
 
 app.post("/viewMentors", function(req, res){  
-  console.log(Date());
-  console.log(req.user.id);
-  console.log(req.body.mentorID); 
+  User.updateOne({username: req.user.username}, {mentorSelected: req.body.mentorID}, {upsert: true},
+    function(err){
+      if (err){
+        console.log(err);
+      } else {
+        console.log("Success!")
+      }
+      });
+res.redirect("/mentorSelection");
+  console.log(req.user.mentorSelected)
+  
+  // console.log(Date());
+  // console.log(req.user.id);
+  // console.log(req.body.mentorID); 
 });
 
 
@@ -321,12 +348,10 @@ app.post("/myprofile", function(req, res){
     res.redirect("/myprofile");
 });
 
-
 let port = process.env.PORT;
   if (port == null || port =="") {
     port = 3000;
   }
-
 
 app.listen(port, function() {
     console.log("Server started Successfully");
