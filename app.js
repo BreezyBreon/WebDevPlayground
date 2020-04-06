@@ -248,6 +248,13 @@ app.get("/mentorSelection", function(req, res){
       res.redirect("/login")
     }});
 
+  app.get("/events", function(req, res){
+    if(req.isAuthenticated()){
+      res.render("events", {user: req.user})
+    } else {
+      res.redirect("/login")
+    }});
+
 // Authentication requests for Linkedin OAuth
 app.get('/auth/linkedin',
   passport.authenticate('linkedin'),
