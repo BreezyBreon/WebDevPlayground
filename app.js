@@ -220,6 +220,15 @@ app.get("/launch", function(req, res){
    res.redirect ("/login")
 }});
 
+app.get("/launch", function(req, res){
+  if (req.isAuthenticated()){
+    res.render("launch", {user: req.user})
+     } else {
+   res.redirect ("/login")
+}});
+
+
+
 app.get("/myprofile", function(req, res){
   if(req.isAuthenticated()){
     res.render("myprofile", {user: req.user})
