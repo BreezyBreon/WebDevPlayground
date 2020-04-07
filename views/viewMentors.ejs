@@ -1,5 +1,6 @@
 <!doctype html>
 
+
 <%- include partials/header -%>
 <%- include partials/navBar -%>
 
@@ -27,7 +28,6 @@
               <form action="/viewMentors" method="POST">
                 
                   <input type="hidden" name="mentorID" value="<%= mentor[i]._id %>">
-
                   <h2><%= mentor[i].fname %> <%= mentor[i].lname %><small><%= mentor[i].email %></small></h2>
                   <p><button class="connectBtn" type="submit">Connect</button></p>
               </form>
