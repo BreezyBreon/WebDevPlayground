@@ -40,7 +40,7 @@ app.use(passport.session());
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true})
 mongoose.set('useCreateIndex', true);
 
-// UserSchema - works
+// UserSchema - works; need to add sub schema
 const userSchema = new mongoose.Schema ({
   googleID: String,
   linkedinID: String,
@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema ({
 
   
 
-// MentorView Schema - WIP
+// MentorView Schema - WIP, populates mentor view
   const mentorSchema =  new mongoose.Schema ({
     _id: String,
     fname: String,
