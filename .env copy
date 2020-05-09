@@ -1,0 +1,10 @@
+{
+LINKEDIN_ID=78gfpqwf4ka6jx
+LINKEDIN_SECRET=z9UBKckr0lZABcfq
+MONGODB_URI=mongodb+srv://BreezyBreon:tacobell5@heroku-rftvs92x-ksc8f.mongodb.net/heroku_rftvs92x?retryWrites=true&w=majority
+
+
+
+GOOGLE_CLIENT_ID=744873154694-2og94dg9jrm5biet2sb0u91amct4m83h.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=S45T8XeyxSbUaCEb_32CV8hJ
+}
