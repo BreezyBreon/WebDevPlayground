@@ -1,9 +1,16 @@
+require('./models/User')
+
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
 require('dotenv').config();
 
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(authRoutes);
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -27,5 +34,4 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Server succesffully started on port 3000');
-    
-})
+});
