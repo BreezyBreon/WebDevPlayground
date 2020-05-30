@@ -19,10 +19,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 mongoose.connection.on('connected', () => {
-    console.log("Connected to MongoDB instance succesfully");
+    console.log("Connected to MongoDB instance successfully");
 });
 
-mongoose.connection.on('error', err => {
+mongoose.connection.on('error', (err) => {
     console.error("Error in connecting to MongoDB", err);
 });
 
@@ -33,5 +33,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Server succesffully started on port 3000');
+    console.log('Server successfully started on port 3000');
 });
